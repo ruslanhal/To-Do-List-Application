@@ -7,6 +7,7 @@ import { arrayMove } from "@dnd-kit/sortable";
 import { getTaskPos, useCustomSensors } from "./service/task.service";
 import Input from "./components/Input/Input";
 import { v4 as uuidv4 } from "uuid";
+import TaskAvailability from "./components/ui/TaskAvailability/TaskAvailability";
 
 function App() {
   const [tasks, setTasks] = useState<Itask[]>([]);
@@ -82,18 +83,22 @@ function App() {
             SetInputValue={SetInputValue}
             handleAddTasks={handleAddTasks}
           />
-          <DndContext
-            sensors={sensors}
-            onDragEnd={handleDragEnd}
-            collisionDetection={closestCorners}
-          >
-            <Column
-              tasks={tasks}
-              deleteTodo={handleDeleteTodo}
-              toggleTaskCompletion={toggleTaskCompletion}
-              updateTaskTitle={updateTaskTitle}
-            />
-          </DndContext>
+          {tasks.length > 0 ? (
+            <DndContext
+              sensors={sensors}
+              onDragEnd={handleDragEnd}
+              collisionDetection={closestCorners}
+            >
+              <Column
+                tasks={tasks}
+                deleteTodo={handleDeleteTodo}
+                toggleTaskCompletion={toggleTaskCompletion}
+                updateTaskTitle={updateTaskTitle}
+              />
+            </DndContext>
+          ) : (
+            <TaskAvailability />
+          )}
         </section>
       </div>
     </div>
