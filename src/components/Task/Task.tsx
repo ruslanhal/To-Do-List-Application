@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 import styles from "../Task/task.module.scss";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import TaskButtons from "../ui/button/TaskButton";
 
 interface Props {
   id: string;
@@ -95,15 +96,12 @@ const Task: FC<Props> = ({
         )}
       </div>
       <div className={styles.btnFlex}>
-        <button className={styles.btn} onClick={() => deleteTodo(id)}>
-          Delete
-        </button>
-        <button onClick={() => toggleTaskCompletion(id)} className={styles.btn}>
-          Complete
-        </button>
-        <button onClick={handleEditClick} className={styles.btn}>
-          Edit
-        </button>
+      <TaskButtons
+        id={id}
+        deleteTodo={deleteTodo}
+        toggleTaskCompletion={toggleTaskCompletion}
+        handleEditClick={handleEditClick}
+      />
       </div>
       <p>Added: {formattedDate}</p>
     </div>
