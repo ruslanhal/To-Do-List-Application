@@ -1,6 +1,6 @@
 import { KeyboardSensor, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import { Itask } from "../interface/TaskInterface";
+import { Itask } from "../interface/task.interface";
 
 
 

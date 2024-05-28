@@ -2,5 +2,6 @@
 export interface Itask {
     id:string,
     title:string,
-    isCompleted:boolean
+    isCompleted:boolean,
+    createdAt: Date | string,
 }
